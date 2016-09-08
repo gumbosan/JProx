@@ -2,7 +2,7 @@ package controllers;
 
 import com.google.gson.GsonBuilder;
 import org.apache.commons.lang.StringUtils;
-import org.yaml.snakeyaml.util.UriEncoder;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.unbescape.html.HtmlEscape;
 import play.libs.F;
 import play.libs.WS;
@@ -70,7 +70,7 @@ public class Application extends Controller {
 
         responseStr = new GsonBuilder().disableHtmlEscaping().create().toJson(new Result(responseStr , new Result.Status(url, result.getContentType(), result.getStatus())));
         //return responseStr;
-        return JsonEscape.unescapeJson(responseStr);
+        return unescapeHtml(responseStr);
     }
 
     public static String sanitizeJsonpParam(String s) {
