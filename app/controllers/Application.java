@@ -38,8 +38,8 @@ public class Application extends Controller {
     }
 
     public static void get(String url, final String callback) {
-        final String encodedUrl = UriEncoder.encode(url);
-        F.Promise<WS.HttpResponse> remoteCall = WS.url(encodedUrl).getAsync();
+        //final String encodedUrl = UriEncoder.encode(url);
+        F.Promise<WS.HttpResponse> remoteCall = WS.url(url).getAsync();
 
         await(remoteCall, new F.Action<WS.HttpResponse>() {
             public void invoke(WS.HttpResponse result) {
