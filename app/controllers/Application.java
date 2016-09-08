@@ -69,7 +69,7 @@ public class Application extends Controller {
 
         responseStr = new GsonBuilder().disableHtmlEscaping().create().toJson(new Result(responseStr , new Result.Status(url, result.getContentType(), result.getStatus())));
         //return responseStr;
-        return unescapeHtml(responseStr);
+        return StringEscapeUtils.unescapeHtml(responseStr);
     }
 
     public static String sanitizeJsonpParam(String s) {
