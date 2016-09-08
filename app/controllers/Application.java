@@ -44,8 +44,7 @@ public class Application extends Controller {
 
         await(remoteCall, new F.Action<WS.HttpResponse>() {
             public void invoke(WS.HttpResponse result) {
-                //String responseStr = getResponseStr(result, encodedUrl);
-                String responseStr = getResponseStr(result);
+                String responseStr = getResponseStr(result, encodedUrl);
                 
                 // http://blog.altosresearch.com/supporting-the-jsonp-callback-protocol-with-jquery-and-java/
                 if ( callback != null ) {
@@ -69,7 +68,7 @@ public class Application extends Controller {
         String responseStr =    result.getString();
 
         responseStr = new GsonBuilder().disableHtmlEscaping().create().toJson(new Result(responseStr , new Result.Status(url, result.getContentType(), result.getStatus())));
-        return responseStr;
+        return UrlDecode(responseStr);
     }
 
     public static String sanitizeJsonpParam(String s) {
