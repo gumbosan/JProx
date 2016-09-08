@@ -44,8 +44,9 @@ public class Application extends Controller {
 
         await(remoteCall, new F.Action<WS.HttpResponse>() {
             public void invoke(WS.HttpResponse result) {
-                String responseStr = getResponseStr(result, encodedUrl);
-
+                //String responseStr = getResponseStr(result, encodedUrl);
+                String responseStr = getResponseStr(result);
+                
                 // http://blog.altosresearch.com/supporting-the-jsonp-callback-protocol-with-jquery-and-java/
                 if ( callback != null ) {
                     response.contentType = "application/x-javascript";
