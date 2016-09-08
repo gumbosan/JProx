@@ -3,7 +3,6 @@ package controllers;
 import com.google.gson.GsonBuilder;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.StringEscapeUtils;
-import org.unbescape.html.HtmlEscape;
 import play.libs.F;
 import play.libs.WS;
 import play.mvc.*;
